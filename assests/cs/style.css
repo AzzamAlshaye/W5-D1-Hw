@@ -9,7 +9,8 @@
 body {
   font-family: "IBM Plex Sans", sans-serif;
   background: #e9e9e9;
-  padding: 2rem;
+
+  padding-top: 100px;
 }
 p {
   text-align: start;
@@ -40,15 +41,6 @@ a {
   filter: invert(1);
 }
 
-.navbar-main .input-group .form-control {
-  background-color: #f2eadc; /* Off-White */
-  border: 1px solid #b18d30; /* Mustard */
-  color: #2c3b33; /* Dark Teal */
-}
-.navbar-main .input-group .form-control::placeholder {
-  color: #2c3b33;
-  opacity: 0.7;
-}
 /* btns */
 .btn-main {
   background-color: #02314f;
@@ -62,11 +54,64 @@ a {
   background-color: #023d62; /* Burnt Orange */
   color: #e2f1fa; /* Cream */
 }
+
+/* hero section  */
+
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+  padding: 1rem;
+  height: 100vh;
+}
+.product-card {
+  border-radius: 1rem;
+  background-color: #eaf0f3;
+  box-shadow: 0 1px 3px rgb(0, 0, 0); /* Subtle shadow */
+  border-radius: 4px;
+  padding: 0.5rem;
+  text-align: center;
+  height: 20rem;
+  width: 15rem;
+}
+.product-card img {
+  width: 100%;
+  height: 60%;
+  margin-bottom: 0.5rem;
+}
+.product-card .title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+}
+.product-card .price {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* .container {
+  display: flex;
+  height: 100vh;
+  flex-wrap: wrap;
+  gap: 5rem;
+  justify-content: center;
+
+  margin-top: 2rem;
+}
 .card {
-  background: #84e6ea;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  height: 20rem;
+  width: 20rem;
+
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
+.img-card {
+  width: 100%;
+  height: 80%;
+} */
 
 /* .header-div {
   display: flex;

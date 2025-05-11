@@ -1,22 +1,45 @@
-// const resCodes = [
-//   100, 101, 102, 103, 200, 201, 202, 203, 204, 206, 207, 208, 214, 226, 300,
-//   301, 302, 303, 304, 305, 307, 308, 400, 401, 402, 403, 404, 405, 406, 407,
-//   408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 420, 421, 422, 423,
-//   424, 425, 426, 428, 429, 431, 444, 450, 451, 497, 498, 499, 500, 501, 502,
-//   503, 504, 506, 507, 508, 509, 510, 511, 521, 522, 523, 525, 530, 599,
-// ];
+async function fetchAndDisplayProducts() {
+  try {
+    const response = await fetch("https://fakestoreapi.com/products");
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    // 3. Parse JSON
+    const products = await response.json();
 
-// addEventListener("DOMContentLoaded", function cat() {
-//   for (let i = 0; i < resCodes.length; i++) {
-//     const div = document.createElement("div");
-//     div.classList.add("card");
-//     const img = document.createElement("img");
-//     img.src = `https://http.cat/${resCodes[i]}.jpg`;
-//     img.classList.add("img-card");
-//     const h1 = document.createElement("h1");
-//     h1.innerText = resCodes[i];
-//     container.appendChild(div);
-//     div.appendChild(img);
-//     div.appendChild(h1);
-//   }
-// });
+    // 4. Get the container
+    const container = document.getElementById("container");
+
+    // 5. Loop through each product and build a card
+    products.forEach((product) => {
+      const card = document.createElement("div");
+      card.classList.add("product-card");
+
+      // Image
+      const img = document.createElement("img");
+      img.src = product.image;
+      img.alt = product.title;
+      card.appendChild(img);
+
+      // Title
+      const title = document.createElement("div");
+      title.classList.add("title");
+      title.textContent = product.title;
+      card.appendChild(title);
+
+      // Price
+      const price = document.createElement("div");
+      price.classList.add("price");
+      price.textContent = `$${product.price.toFixed(2)}`;
+      card.appendChild(price);
+
+      // Append to container
+      container.appendChild(card);
+    });
+  } catch (err) {
+    console.error("Failed to fetch products:", err);
+  }
+}
+
+// 6. Run after DOM is loaded
+document.addEventListener("DOMContentLoaded", fetchAndDisplayProducts);
